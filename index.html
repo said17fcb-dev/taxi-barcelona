@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taxi Barcelona | Traslados Privados Premium 24h</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #ffcc00; /* El amarillo clásico del taxi de Barcelona pero refinado */
+            --primary: #ff4f4f;
+            --dark-bg: #0f1113;
+            --card-bg: #1a1d21;
+            --text-light: #ffffff;
+            --text-muted: #a0aec0;
+            --whatsapp: #25D366;
+        }
+
+        * { box-sizing: border-box; outline: none; }
+
+        body {
+            margin: 0;
+            font-family: 'Lexend', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND & OVERLAY --- */
+        .hero-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(15, 17, 19, 0.85), rgba(15, 17, 19, 0.95)), 
+                        url('https://images.unsplash.com/photo-1583030949502-0e427f779354?q=80&w=2000'); /* Imagen nocturna de BCN */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* --- LAYOUT --- */
+        .wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- TEXTO IZQUIERDA --- */
+        .content-info h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        .content-info h1 span {
+            color: var(--gold);
+            display: block;
+        }
+
+        .content-info p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        /* --- TARJETA DE RESERVA (DERECHA) --- */
+        .booking-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .booking-card h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .price-info {
+            text-align: center;
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--gold);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            background: #25292e;
+            border: 1px solid #32373d;
+            padding: 14px 18px;
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--gold);
+            background: #2d3238;
+        }
+
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* --- BOTÓN WHATSAPP --- */
+        .btn-ws {
+            width: 100%;
+            background: var(--whatsapp);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-ws:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            background: #20bd5a;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+                text-align: center;
+            }
+            .content-info h1 { font-size: 42px; }
+            .content-info p { margin: 0 auto 30px; }
+            .features-list { display: inline-block; text-align: left; }
+            .content-info { order: 2; }
+            .booking-card { order: 1; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-bg"></div>
+
+    <div class="wrapper">
+        
+        <section class="content-info">
+            <h1>Taxi <span>Barcelona</span></h1>
+            <p>Tu servicio de transporte privado con la máxima puntualidad, confort y transparencia.</p>
+            
+            <ul class="features-list">
+                <li>Recogidas en Aeropuerto y Cruceros</li>
+                <li>Vehículos modernos y climatizados</li>
+                <li>Conductores profesionales bilingües</li>
+                <li>Servicio garantizado 24 Horas</li>
+            </ul>
+        </section>
+
+        <section class="booking-card">
+            <h2>RESERVA TU VIAJE</h2>
+            <div class="price-info">TARIFA FIJA: 1,70€ / KM</div>
+
+            <div class="form-group">
+                <label>Punto de Recogida</label>
+                <input type="text" id="origen" placeholder="Ej: Aeropuerto T1, Hotel, Calle...">
+            </div>
+
+            <div class="form-group">
+                <label>Destino Final</label>
+                <input type="text" id="destino" placeholder="¿A dónde vamos?">
+            </div>
+
+            <div class="grid-inputs">
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <input type="date" id="fecha">
+                </div>
+                <div class="form-group">
+                    <label>Hora</label>
+                    <input type="time" id="hora">
+                </div>
+            </div>
+
+            <div class="grid-inputs">
+                <div class="form-group">
+                    <label>Pasajeros</label>
+                    <select id="pasajeros">
+                        <option value="1-4">1-4 Pers.</option>
+                        <option value="5-8">5-8 Pers.</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Maletas</label>
+                    <select id="maletas">
+                        <option value="Standard">Normal</option>
+                        <option value="Mucho">Grande</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="sendToWhatsapp()" class="btn-ws">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.767 2.813 2.874-.754c.944.528 2.03.835 3.198.835 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm4.411 8.311c-.18.533-.894.97-1.391 1.062-.443.083-1.023.147-2.924-.639-2.434-1.003-4.005-3.483-4.127-3.644-.121-.161-1.008-1.34-1.008-2.559 0-1.219.644-1.816.866-2.056.222-.24.484-.3.644-.3.161 0 .322.001.463.009.151.008.354-.057.554.43.201.489.685 1.673.746 1.793.061.121.101.261.02.422-.081.162-.121.261-.242.401-.121.14-.255.312-.364.419-.122.121-.25.253-.108.496.142.242.632 1.042 1.357 1.687.933.829 1.722 1.085 1.964 1.206.242.121.383.101.523-.061.141-.161.604-.702.765-.943.161-.241.322-.201.544-.121.221.081 1.41.664 1.651.785.241.121.402.181.463.281.06.1.06.581-.12 1.114zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/></svg>
+                ENVIAR A WHATSAPP
+            </button>
+            
+            <p style="text-align: center; font-size: 11px; color: #555; margin-top: 15px;">
+                Confirmación inmediata • Soporte 24h al 640 904 656
+            </p>
+        </section>
+
+    </div>
+
+    <script>
+        function sendToWhatsapp() {
+            const origen = document.getElementById('origen').value;
+            const destino = document.getElementById('destino').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const pasajeros = document.getElementById('pasajeros').value;
+            const maletas = document.getElementById('maletas').value;
+
+            if (!origen || !destino || !fecha || !hora) {
+                alert("Por favor rellena los datos mínimos para calcular tu taxi.");
+                return;
+            }
+
+            const phone = "34640904656";
+            const text = `🚕 *RESERVA TAXI BARCELONA*%0A%0A` +
+                         `📍 *Origen:* ${origen}%0A` +
+                         `🏁 *Destino:* ${destino}%0A` +
+                         `📅 *Fecha:* ${fecha}%0A` +
+                         `🕒 *Hora:* ${hora}%0A` +
+                         `👥 *Pax:* ${pasajeros}%0A` +
+                         `🧳 *Equipaje:* ${maletas}%0A%0A` +
+                         `_Solicito confirmación para tarifa de 1,70€/km._`;
+
+            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
